@@ -38,7 +38,7 @@ export default function Hero() {
             🚀 Digital Agency · Est. 2020
           </motion.span>
           <motion.h1 variants={fadeInUp}>
-            We Build <span>E-Commerce</span>, Websites & Hosting That Grow Your Business
+            We Turn Ideas Into Powerful Digital Experiences
           </motion.h1>
           <motion.p variants={fadeInUp}>
             Quantivo Solutions delivers end-to-end digital services — from online stores
