@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none">
+  <defs>
+    <linearGradient id="o" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF8C33"/>
+      <stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2A32"/>
+      <stop offset="1" stop-color="#141418"/>
+    </linearGradient>
+    <radialGradient id="g" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#FF6A00" stop-opacity="0.26"/>
+      <stop offset="1" stop-color="#FF6A00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="200" cy="135" rx="165" ry="105" fill="url(#g)"/>
+  <rect x="96" y="40" width="230" height="150" rx="14" fill="url(#d)" stroke="#3A3A44" stroke-width="2"/>
+  <rect x="188" y="190" width="46" height="18" fill="#1A1A20"/>
+  <rect x="156" y="206" width="110" height="12" rx="6" fill="#0E0E12"/>
+  <path d="M150 150c22-44 60-62 96-40 18 11 28 30 32 50" stroke="#FF6A00" stroke-width="5" stroke-linecap="round" fill="none"/>
+  <rect x="142" y="142" width="14" height="14" rx="3" fill="#FF8C33" stroke="#0E0E12" stroke-width="2.5"/>
+  <rect x="200" y="96" width="14" height="14" rx="3" fill="#FF8C33" stroke="#0E0E12" stroke-width="2.5"/>
+  <rect x="264" y="148" width="14" height="14" rx="3" fill="#FF8C33" stroke="#0E0E12" stroke-width="2.5"/>
+  <path d="M271 162l-38 44" stroke="#FF8C33" stroke-width="5" stroke-linecap="round"/>
+  <path d="M258 196l8 14 12-8z" fill="#0E0E12" stroke="#FF8C33" stroke-width="3" stroke-linejoin="round"/>
+  <rect x="52" y="64" width="36" height="36" rx="8" fill="url(#o)"/>
+  <path d="M60 88l8-10 6 7 4-5 8 8z" fill="#0E0E12"/>
+  <circle cx="64" cy="76" r="3.5" fill="#0E0E12"/>
+  <rect x="52" y="112" width="36" height="36" rx="8" fill="#141418" stroke="#FF6A00" stroke-width="2.5"/>
+  <text x="70" y="137" text-anchor="middle" font-family="Arial, sans-serif" font-size="18" font-weight="800" fill="#FF8C33">T</text>
+  <rect x="52" y="160" width="36" height="36" rx="8" fill="#141418" stroke="#FF6A00" stroke-width="2.5"/>
+  <circle cx="70" cy="178" r="8" stroke="#FF8C33" stroke-width="3.5" fill="none"/>
+</svg>

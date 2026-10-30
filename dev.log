@@ -1,0 +1,128 @@
+
+> quantivo-company-react@1.0.0 dev
+> vite
+
+Port 5173 is in use, trying another one...
+
+  [32m[1mVITE[22m v5.4.21[39m  [2mready in [0m[1m281[22m[2m[0m ms[22m
+
+  [32m➜[39m  [1mLocal[22m:   [36mhttp://localhost:[1m5174[22m/[39m
+[2m  [32m➜[39m  [1mNetwork[22m[2m: use [22m[1m--host[22m[2m to expose[22m
+[2m9:42:20 am[22m [36m[1m[vite][22m[39m [32mpage reload [39m[2msrc/main.tsx[22m
+[2m9:43:58 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:44:00 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:44:59 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:45:21 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:45:35 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:57:22 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About/index.tsx[22m
+[2m9:57:37 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:57:48 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:57:48 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:58:12 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:58:26 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:58:41 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/light.css[22m
+[2m9:58:42 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/dark.css[22m
+[2m10:29:43 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:00 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:01 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:21 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:23 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:50 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:30:52 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:32:19 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:32:20 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:32:47 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:33:27 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:33:55 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:34:17 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:34:18 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:34:35 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:34:36 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m10:34:56 am[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m12:51:32 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx[22m
+[2m12:52:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx[22m
+[2m12:52:51 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/dark.css[22m
+[2m12:52:57 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/light.css[22m
+[2m12:55:50 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:11:10 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx[22m
+[2m1:12:14 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/routes/index.tsx[22m
+[2m1:12:15 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/routes/index.tsx[22m
+[2m1:12:40 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx[22m
+[2m1:13:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact/index.tsx[22m
+[2m1:13:21 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact/index.tsx[22m
+[2m1:14:56 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:17:53 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:18:00 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:18:22 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:18:25 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:19:15 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:19:21 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m1:51:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:51:02 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:51:04 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:53:17 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:53:19 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:53:22 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:55:28 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx[22m
+[2m1:55:29 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact/index.tsx[22m
+[2m1:57:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About/index.tsx[22m
+[2m1:59:44 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:59:46 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m1:59:48 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m2:12:27 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/ServicesList/index.tsx[22m
+[2m2:13:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:15:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:15:03 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:24:41 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Header/index.tsx[22m
+[2m2:25:04 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:26:23 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:27:46 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:27:47 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:41:46 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx, /src/components/Contact/index.tsx, /src/pages/ServiceDetail.tsx[22m
+[2m2:41:56 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx, /src/components/Contact/index.tsx, /src/pages/ServiceDetail.tsx[22m
+[2m2:45:12 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Services/index.tsx[22m
+[2m2:46:06 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact/index.tsx[22m
+[2m2:48:00 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Contact/index.tsx[22m
+[2m2:51:11 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/dark.css[22m
+[2m2:51:23 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/light.css[22m
+[2m2:53:34 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:54:01 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:54:03 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m2:54:07 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Footer/index.tsx[22m
+[2m3:30:43 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m3:30:44 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m3:31:44 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m3:52:23 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:27:27 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m4:28:08 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx[22m
+[2m4:30:07 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Portfolio/index.tsx[22m
+[2m4:30:51 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/routes/index.tsx[22m
+[2m4:30:53 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/routes/index.tsx[22m
+[2m4:31:00 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/light.css[22m
+[2m4:31:06 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/dark.css[22m
+[2m4:32:03 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:33:03 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:33:58 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:33:59 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:49:30 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:49:31 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:49:32 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:50:13 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m4:54:18 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:54:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:54:23 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:56:46 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:56:48 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m4:56:50 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/Team/index.tsx, /src/components/Portfolio/index.tsx, /src/components/Contact/index.tsx, /src/pages/PortfolioDetail.tsx[22m
+[2m9:33:15 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About/index.tsx[22m
+[2m9:35:44 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/light.css[22m
+[2m9:35:49 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/dark.css[22m
+[2m9:43:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:50:34 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:50:38 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:50:40 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:53:20 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:53:27 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:56:32 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/styles/global.css[22m
+[2m9:58:28 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About/index.tsx[22m
+[2m9:58:29 pm[22m [36m[1m[vite][22m[39m [32mhmr update [39m[2m/src/components/About/index.tsx[22m

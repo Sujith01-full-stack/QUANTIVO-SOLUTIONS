@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" fill="none">
+  <defs>
+    <linearGradient id="obg" x1="0" y1="0" x2="800" y2="560" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0e0e0e"/><stop offset="1" stop-color="#1a1208"/>
+    </linearGradient>
+    <linearGradient id="ooj" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FF8C33"/><stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="owall" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="#1c1c1c"/><stop offset="1" stop-color="#141414"/>
+    </linearGradient>
+    <radialGradient id="oglow" cx="50%" cy="40%" r="55%">
+      <stop stop-color="rgba(255,106,0,0.18)"/><stop offset="1" stop-color="rgba(255,106,0,0)"/>
+    </radialGradient>
+    <filter id="osh" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="12" stdDeviation="16" flood-color="#000" flood-opacity="0.4"/>
+    </filter>
+  </defs>
+  <rect width="800" height="560" fill="url(#obg)"/>
+  <circle cx="400" cy="220" r="260" fill="url(#oglow)"/>
+
+  <!-- Ceiling with track lights -->
+  <rect x="0" y="0" width="800" height="90" fill="#0a0a0a"/>
+  <rect x="60" y="40" width="680" height="4" rx="2" fill="#222"/>
+  <rect x="120" y="44" width="10" height="18" rx="3" fill="#333"/>
+  <circle cx="125" cy="68" r="6" fill="#FFD090" opacity="0.85"/>
+  <circle cx="125" cy="68" r="14" fill="rgba(255,180,80,0.25)"/>
+  <rect x="300" y="44" width="10" height="18" rx="3" fill="#333"/>
+  <circle cx="305" cy="68" r="6" fill="#FFD090" opacity="0.85"/>
+  <circle cx="305" cy="68" r="14" fill="rgba(255,180,80,0.25)"/>
+  <rect x="480" y="44" width="10" height="18" rx="3" fill="#333"/>
+  <circle cx="485" cy="68" r="6" fill="#FFD090" opacity="0.85"/>
+  <circle cx="485" cy="68" r="14" fill="rgba(255,180,80,0.25)"/>
+  <rect x="640" y="44" width="10" height="18" rx="3" fill="#333"/>
+  <circle cx="645" cy="68" r="6" fill="#FFD090" opacity="0.85"/>
+  <circle cx="645" cy="68" r="14" fill="rgba(255,180,80,0.25)"/>
+
+  <!-- Wooden slat wall accents -->
+  <rect x="40" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+  <rect x="58" y="90" width="14" height="280" rx="3" fill="#2e2010"/>
+  <rect x="76" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+  <rect x="94" y="90" width="14" height="280" rx="3" fill="#2e2010"/>
+  <rect x="112" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+
+  <rect x="674" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+  <rect x="692" y="90" width="14" height="280" rx="3" fill="#2e2010"/>
+  <rect x="710" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+  <rect x="728" y="90" width="14" height="280" rx="3" fill="#2e2010"/>
+  <rect x="746" y="90" width="14" height="280" rx="3" fill="#3a2a18"/>
+
+  <!-- Main wall -->
+  <rect x="140" y="90" width="520" height="280" fill="url(#owall)"/>
+
+  <!-- Logo on wall -->
+  <g transform="translate(400 180)">
+    <polygon points="0,-42 36,-21 36,21 0,42 -36,21 -36,-21" fill="none" stroke="#fff" stroke-width="5"/>
+    <circle cx="12" cy="-10" r="10" fill="url(#ooj)"/>
+  </g>
+  <text x="400" y="260" font-family="Arial, sans-serif" font-size="30" font-weight="900" fill="#fff" text-anchor="middle" letter-spacing="3">QUANTIVO</text>
+  <text x="400" y="290" font-family="Arial, sans-serif" font-size="18" font-weight="700" fill="#FF6A00" text-anchor="middle" letter-spacing="6">SOLUTIONS</text>
+
+  <!-- Floor -->
+  <rect x="0" y="370" width="800" height="190" fill="#0c0c0c"/>
+  <rect x="0" y="370" width="800" height="3" fill="#1a1a1a"/>
+
+  <!-- Desk left -->
+  <g filter="url(#osh)">
+    <rect x="80" y="320" width="200" height="12" rx="4" fill="#2a2a2a"/>
+    <rect x="100" y="332" width="10" height="60" fill="#222"/>
+    <rect x="250" y="332" width="10" height="60" fill="#222"/>
+    <!-- Monitor -->
+    <rect x="120" y="240" width="120" height="72" rx="5" fill="#111" stroke="#333" stroke-width="2"/>
+    <rect x="126" y="246" width="108" height="60" rx="3" fill="#0a1628"/>
+    <rect x="136" y="254" width="50" height="8" rx="2" fill="url(#ooj)"/>
+    <rect x="136" y="268" width="70" height="5" rx="2" fill="#1e3a5f"/>
+    <rect x="136" y="278" width="56" height="5" rx="2" fill="#1e3a5f"/>
+    <rect x="172" y="312" width="16" height="8" fill="#222"/>
+    <rect x="158" y="320" width="44" height="4" rx="2" fill="#333"/>
+  </g>
+
+  <!-- Desk center-right -->
+  <g filter="url(#osh)">
+    <rect x="480" y="320" width="220" height="12" rx="4" fill="#2a2a2a"/>
+    <rect x="500" y="332" width="10" height="60" fill="#222"/>
+    <rect x="670" y="332" width="10" height="60" fill="#222"/>
+    <!-- Monitor -->
+    <rect x="530" y="235" width="130" height="78" rx="5" fill="#111" stroke="#333" stroke-width="2"/>
+    <rect x="536" y="241" width="118" height="66" rx="3" fill="#0a1628"/>
+    <rect x="546" y="250" width="60" height="8" rx="2" fill="url(#ooj)"/>
+    <rect x="546" y="264" width="80" height="5" rx="2" fill="#1e3a5f"/>
+    <rect x="546" y="274" width="64" height="5" rx="2" fill="#1e3a5f"/>
+    <rect x="588" y="313" width="16" height="8" fill="#222"/>
+    <rect x="572" y="321" width="48" height="4" rx="2" fill="#333"/>
+    <!-- Keyboard -->
+    <rect x="545" y="326" width="90" height="10" rx="3" fill="#1a1a1a"/>
+  </g>
+
+  <!-- Desk far right small -->
+  <g>
+    <rect x="320" y="325" width="140" height="10" rx="3" fill="#252525"/>
+    <rect x="335" y="335" width="8" height="50" fill="#1e1e1e"/>
+    <rect x="437" y="335" width="8" height="50" fill="#1e1e1e"/>
+    <rect x="350" y="255" width="90" height="60" rx="4" fill="#111" stroke="#2a2a2a" stroke-width="2"/>
+    <rect x="355" y="260" width="80" height="50" rx="2" fill="#0d1a2e"/>
+    <rect x="363" y="268" width="40" height="6" rx="2" fill="url(#ooj)"/>
+    <rect x="363" y="280" width="56" height="4" rx="2" fill="#1e3a5f"/>
+    <rect x="388" y="315" width="14" height="10" fill="#222"/>
+  </g>
+
+  <!-- Chairs -->
+  <ellipse cx="180" cy="430" rx="36" ry="12" fill="#161616"/>
+  <rect x="168" y="380" width="24" height="50" rx="8" fill="#1a1a1a"/>
+  <rect x="176" y="428" width="8" height="20" fill="#222"/>
+
+  <ellipse cx="560" cy="435" rx="36" ry="12" fill="#161616"/>
+  <rect x="548" y="385" width="24" height="50" rx="8" fill="#1a1a1a"/>
+  <rect x="556" y="433" width="8" height="20" fill="#222"/>
+
+  <ellipse cx="390" cy="432" rx="32" ry="11" fill="#151515"/>
+  <rect x="380" y="388" width="20" height="44" rx="7" fill="#181818"/>
+
+  <!-- Plant left -->
+  <rect x="50" y="300" width="28" height="70" rx="6" fill="#2a1a10"/>
+  <ellipse cx="64" cy="290" rx="26" ry="30" fill="#1a4a28"/>
+  <ellipse cx="52" cy="275" rx="16" ry="20" fill="#226034"/>
+  <ellipse cx="78" cy="278" rx="14" ry="18" fill="#1e552e"/>
+
+  <!-- Plant right -->
+  <rect x="710" y="290" width="30" height="80" rx="6" fill="#2a1a10"/>
+  <ellipse cx="725" cy="278" rx="28" ry="34" fill="#1a4a28"/>
+  <ellipse cx="710" cy="260" rx="18" ry="22" fill="#226034"/>
+  <ellipse cx="742" cy="264" rx="15" ry="20" fill="#1e552e"/>
+
+  <!-- Ambient floor glow -->
+  <ellipse cx="400" cy="480" rx="280" ry="40" fill="rgba(255,106,0,0.06)"/>
+</svg>

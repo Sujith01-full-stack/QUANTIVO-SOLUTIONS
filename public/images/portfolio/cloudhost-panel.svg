@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" fill="none">
+  <defs>
+    <linearGradient id="bg3" x1="0" y1="0" x2="800" y2="500" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#080808"/><stop offset="1" stop-color="#0f0a04"/>
+    </linearGradient>
+    <linearGradient id="oj3" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#FF8C33"/><stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="chart" x1="0" y1="0" x2="0" y2="1">
+      <stop stop-color="rgba(255,106,0,0.4)"/><stop offset="1" stop-color="rgba(255,106,0,0)"/>
+    </linearGradient>
+    <radialGradient id="glow3" cx="50%" cy="45%" r="50%">
+      <stop stop-color="rgba(255,106,0,0.22)"/><stop offset="1" stop-color="rgba(255,106,0,0)"/>
+    </radialGradient>
+    <filter id="sh5" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#000" flood-opacity="0.55"/>
+    </filter>
+    <filter id="sh6" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg3)"/>
+  <circle cx="400" cy="230" r="240" fill="url(#glow3)"/>
+  <circle cx="725" cy="65" r="2.5" fill="#FF6A00" opacity="0.5"/>
+  <circle cx="55" cy="435" r="2" fill="#FF6A00" opacity="0.4"/>
+  <circle cx="755" cy="405" r="2" fill="#FF6A00" opacity="0.35"/>
+  <circle cx="45" cy="75" r="2.5" fill="#FF6A00" opacity="0.4"/>
+
+  <!-- Monitor shadow -->
+  <ellipse cx="380" cy="392" rx="250" ry="14" fill="#000" opacity="0.4"/>
+
+  <!-- Monitor / Laptop -->
+  <g filter="url(#sh5)">
+    <rect x="120" y="90" width="480" height="290" rx="14" fill="#111"/>
+    <rect x="124" y="94" width="472" height="266" rx="11" fill="#000"/>
+    <rect x="128" y="98" width="464" height="258" rx="9" fill="#0d0d0d"/>
+
+    <!-- Dashboard sidebar -->
+    <rect x="128" y="98" width="110" height="258" fill="#0a0a0a"/>
+    <circle cx="152" cy="120" r="10" fill="url(#oj3)"/>
+    <rect x="168" y="115" width="48" height="8" rx="4" fill="#fff" opacity="0.9"/>
+    <rect x="140" y="144" width="86" height="22" rx="6" fill="rgba(255,106,0,0.15)" stroke="rgba(255,106,0,0.4)"/>
+    <rect x="152" y="151" width="50" height="7" rx="3" fill="url(#oj3)"/>
+    <rect x="140" y="174" width="86" height="20" rx="5" fill="#141414"/>
+    <rect x="152" y="180" width="44" height="6" rx="3" fill="#444"/>
+    <rect x="140" y="202" width="86" height="20" rx="5" fill="#141414"/>
+    <rect x="152" y="208" width="52" height="6" rx="3" fill="#444"/>
+    <rect x="140" y="230" width="86" height="20" rx="5" fill="#141414"/>
+    <rect x="152" y="236" width="40" height="6" rx="3" fill="#444"/>
+    <rect x="140" y="258" width="86" height="20" rx="5" fill="#141414"/>
+    <rect x="152" y="264" width="48" height="6" rx="3" fill="#444"/>
+    <rect x="140" y="286" width="86" height="20" rx="5" fill="#141414"/>
+    <rect x="152" y="292" width="42" height="6" rx="3" fill="#444"/>
+
+    <!-- Dashboard header -->
+    <rect x="238" y="98" width="354" height="40" fill="#0d0d0d"/>
+    <rect x="252" y="110" width="100" height="10" rx="4" fill="#fff" opacity="0.9"/>
+    <rect x="460" y="108" width="50" height="16" rx="8" fill="#141414" stroke="#333"/>
+    <circle cx="470" cy="116" r="4" fill="#28C840"/>
+    <rect x="478" y="113" width="22" height="6" rx="3" fill="#444"/>
+    <rect x="520" y="108" width="56" height="16" rx="8" fill="url(#oj3)"/>
+    <line x1="238" y1="138" x2="592" y2="138" stroke="#1a1a1a" stroke-width="1"/>
+
+    <!-- Stat cards -->
+    <rect x="252" y="150" width="100" height="56" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="262" y="160" width="40" height="6" rx="3" fill="#666"/>
+    <text x="262" y="186" font-family="Arial" font-size="16" font-weight="bold" fill="url(#oj3)">99.9%</text>
+    <rect x="262" y="192" width="50" height="4" rx="2" fill="#1f1f1f"/>
+
+    <rect x="362" y="150" width="100" height="56" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="372" y="160" width="44" height="6" rx="3" fill="#666"/>
+    <text x="372" y="186" font-family="Arial" font-size="16" font-weight="bold" fill="url(#oj3)">12</text>
+    <rect x="372" y="192" width="50" height="4" rx="2" fill="#1f1f1f"/>
+
+    <rect x="472" y="150" width="100" height="56" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="482" y="160" width="38" height="6" rx="3" fill="#666"/>
+    <text x="482" y="186" font-family="Arial" font-size="16" font-weight="bold" fill="url(#oj3)">Daily</text>
+    <rect x="482" y="192" width="50" height="4" rx="2" fill="#1f1f1f"/>
+
+    <!-- Chart area -->
+    <rect x="252" y="216" width="210" height="120" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="264" y="226" width="80" height="7" rx="3" fill="#fff" opacity="0.7"/>
+    <!-- Chart grid -->
+    <line x1="270" y1="260" x2="450" y2="260" stroke="#1a1a1a"/>
+    <line x1="270" y1="280" x2="450" y2="280" stroke="#1a1a1a"/>
+    <line x1="270" y1="300" x2="450" y2="300" stroke="#1a1a1a"/>
+    <!-- Chart line -->
+    <polyline points="270,310 300,290 330,295 360,270 390,275 420,250 448,258" fill="none" stroke="url(#oj3)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="448" cy="258" r="4" fill="#FF6A00"/>
+    <!-- Area fill -->
+    <path d="M270,310 L300,290 L330,295 L360,270 L390,275 L420,250 L448,258 L448,325 L270,325 Z" fill="url(#chart)" opacity="0.5"/>
+
+    <!-- Right panel: domains / SSL -->
+    <rect x="472" y="216" width="100" height="56" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="482" y="226" width="50" height="6" rx="3" fill="#666"/>
+    <circle cx="490" cy="250" r="6" fill="#28C840" opacity="0.9"/>
+    <rect x="502" y="246" width="54" height="6" rx="3" fill="#3a3a3a"/>
+
+    <rect x="472" y="280" width="100" height="56" rx="8" fill="#121212" stroke="#222"/>
+    <rect x="482" y="290" width="54" height="6" rx="3" fill="#666"/>
+    <rect x="482" y="304" width="76" height="8" rx="4" fill="#1f1f1f"/>
+    <rect x="482" y="304" width="56" height="8" rx="4" fill="url(#oj3)"/>
+    <rect x="482" y="318" width="40" height="5" rx="2" fill="#333"/>
+
+    <rect x="124" y="356" width="472" height="18" fill="#0d0d0d"/>
+    <rect x="340" y="360" width="76" height="5" rx="2.5" fill="#1a1a1a"/>
+  </g>
+
+  <path d="M85 377 H635 L615 394 H105 Z" fill="#161616"/>
+
+  <!-- Cloud badge -->
+  <g filter="url(#sh6)">
+    <rect x="80" y="145" width="46" height="46" rx="13" fill="url(#oj3)"/>
+    <path d="M96 172 C92 172 90 168 90 165 C90 161 93 158 97 158 C97 153 101 150 106 150 C111 150 115 153 115 158 C119 158 122 161 122 165 C122 168 120 172 116 172 Z" fill="#fff"/>
+  </g>
+
+  <text x="400" y="460" font-family="Arial, sans-serif" font-size="13" font-weight="bold" fill="#FF6A00" text-anchor="middle" letter-spacing="3">CLOUDHOST PANEL</text>
+</svg>

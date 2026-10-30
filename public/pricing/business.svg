@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 260" fill="none">
+  <defs>
+    <linearGradient id="o" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#FF8C33"/>
+      <stop offset="1" stop-color="#FF6A00"/>
+    </linearGradient>
+    <linearGradient id="d" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2A2A32"/>
+      <stop offset="1" stop-color="#141418"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="0" y1="1" x2="0" y2="0">
+      <stop offset="0" stop-color="#C44E00"/>
+      <stop offset="1" stop-color="#FF8C33"/>
+    </linearGradient>
+    <radialGradient id="g" cx="0.5" cy="0.45" r="0.55">
+      <stop offset="0" stop-color="#FF6A00" stop-opacity="0.28"/>
+      <stop offset="1" stop-color="#FF6A00" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <ellipse cx="200" cy="135" rx="165" ry="105" fill="url(#g)"/>
+  <rect x="58" y="46" width="252" height="164" rx="14" fill="url(#d)" stroke="#3A3A44" stroke-width="2"/>
+  <rect x="58" y="46" width="252" height="30" rx="14" fill="#0E0E12"/>
+  <circle cx="80" cy="61" r="5" fill="#FF5F57"/>
+  <circle cx="98" cy="61" r="5" fill="#FEBC2E"/>
+  <circle cx="116" cy="61" r="5" fill="#28C840"/>
+  <rect x="80" y="92" width="56" height="10" rx="5" fill="#3A3A44"/>
+  <rect x="80" y="110" width="36" height="8" rx="4" fill="#2A2A32"/>
+  <rect x="90" y="160" width="24" height="30" rx="4" fill="url(#bar)"/>
+  <rect x="126" y="142" width="24" height="48" rx="4" fill="url(#bar)"/>
+  <rect x="162" y="122" width="24" height="68" rx="4" fill="url(#bar)"/>
+  <rect x="198" y="100" width="24" height="90" rx="4" fill="url(#bar)"/>
+  <rect x="234" y="78" width="24" height="112" rx="4" fill="url(#o)"/>
+  <path d="M92 148l44-30 36 12 52-46" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <path d="M208 78h22v22" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect x="284" y="120" width="60" height="60" rx="14" fill="url(#o)"/>
+  <path d="M300 150l10 10 18-20" stroke="#0E0E12" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

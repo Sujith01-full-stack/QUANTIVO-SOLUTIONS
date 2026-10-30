@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <defs>
+    <linearGradient id="dkA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#31363e"/>
+      <stop offset="1" stop-color="#15181d"/>
+    </linearGradient>
+    <linearGradient id="dkB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#23272e"/>
+      <stop offset="1" stop-color="#0e1013"/>
+    </linearGradient>
+    <linearGradient id="dkC" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a2f36"/>
+      <stop offset="1" stop-color="#121418"/>
+    </linearGradient>
+    <linearGradient id="rdTop" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ff5c2b"/>
+      <stop offset="1" stop-color="#ff3d00"/>
+    </linearGradient>
+    <linearGradient id="rdLeft" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#e83300"/>
+      <stop offset="1" stop-color="#bf2800"/>
+    </linearGradient>
+    <linearGradient id="rdRight" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ff4500"/>
+      <stop offset="1" stop-color="#d12e00"/>
+    </linearGradient>
+  </defs>
+
+  <path fill-rule="evenodd" clip-rule="evenodd" d="M256 26 L456 141 L456 371 L256 486 L56 371 L56 141 Z M256 116 L134 187 L134 325 L256 396 L378 325 L378 187 Z" fill="url(#dkA)"/>
+
+  <path d="M256 26 L456 141 L378 187 L256 116 Z" fill="url(#dkC)"/>
+  <path d="M56 141 L256 26 L256 116 L134 187 Z" fill="url(#dkB)"/>
+  <path d="M56 141 L134 187 L134 325 L56 371 Z" fill="url(#dkB)"/>
+  <path d="M256 486 L56 371 L134 325 L256 396 Z" fill="url(#dkC)"/>
+  <path d="M456 371 L256 486 L256 396 L378 325 Z" fill="url(#dkB)"/>
+
+  <path d="M360 64 L476 130 L416 165 L300 99 Z" fill="#ffffff"/>
+
+  <path d="M391 74 L471 120 L391 166 L311 120 Z" fill="url(#rdTop)"/>
+  <path d="M311 120 L391 166 L391 252 L311 206 Z" fill="url(#rdLeft)"/>
+  <path d="M391 166 L471 120 L471 206 L391 252 Z" fill="url(#rdRight)"/>
+</svg>
