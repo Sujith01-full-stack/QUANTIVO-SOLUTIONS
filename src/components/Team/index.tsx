@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { LinkedinIcon, XIcon, GithubIcon } from '../UI/SocialIcons'
+import { LinkedinIcon, GithubIcon } from '../UI/SocialIcons'
 import { teamMembers } from '../../services/contact'
 import { fadeInUp, staggerContainer } from '../../lib/animations'
 import Card from '../UI/Card'
@@ -34,18 +34,15 @@ export default function Team() {
           {teamMembers.map(member => (
             <motion.div key={member.id} variants={fadeInUp}>
               <Card className="team-card">
-                <div className="team-avatar">{member.initials}</div>
+                <img src="/images/services/team-avatar.png" alt={member.name} className="team-avatar" />
                 <h3>{member.name}</h3>
                 <span className="team-role">{member.role}</span>
                 <p>{member.bio}</p>
                 <div className="team-social">
-                  <a href={member.social.linkedin} aria-label="LinkedIn">
+                  <a href={member.social.linkedin} aria-label="LinkedIn" target="_blank" rel="noopener noreferrer">
                     <LinkedinIcon />
                   </a>
-                  <a href={member.social.twitter} aria-label="X (Twitter)">
-                    <XIcon />
-                  </a>
-                  <a href={member.social.github} aria-label="GitHub">
+                  <a href={member.social.github} aria-label="GitHub" target="_blank" rel="noopener noreferrer">
                     <GithubIcon />
                   </a>
                 </div>

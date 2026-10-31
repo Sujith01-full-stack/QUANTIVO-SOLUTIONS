@@ -47,9 +47,9 @@ export const COMPANY_PHONES: string[] = [...companyContact.phoneDisplay]
 
 /** Roles advertised on the careers page. Single source of truth. */
 export const careerOpenings = [
-  { title: 'Frontend Developer', type: 'Full-time', location: 'Chennai / Remote' },
-  { title: 'Backend Developer', type: 'Full-time', location: 'Chennai / Remote' },
-  { title: 'UI/UX Designer', type: 'Full-time', location: 'Chennai / Remote' },
+  { title: 'Frontend Developer', type: 'Full-time', location: 'Nagercoil / Remote' },
+  { title: 'Backend Developer', type: 'Full-time', location: 'Nagercoil / Remote' },
+  { title: 'UI/UX Designer', type: 'Full-time', location: 'Nagercoil / Remote' },
 ] as const
 
 export const GENERAL_APPLICATION = 'General Application'

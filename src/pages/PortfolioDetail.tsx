@@ -4,6 +4,7 @@ import { ArrowLeft, ArrowRight, Check, Layers, Cpu, Globe, ExternalLink, Message
 import { getPortfolioItemBySlug, portfolioItems } from '../services/contact'
 import NotFound from './NotFound'
 import { fadeInUp, staggerContainer, scaleIn } from '../lib/animations'
+import ActionButton from '../components/UI/ActionButton'
 
 export default function PortfolioDetail() {
   const { slug } = useParams<{ slug: string }>()
@@ -14,6 +15,10 @@ export default function PortfolioDetail() {
   const related = portfolioItems
     .filter(item => item.category === project.category && item.id !== project.id)
     .slice(0, 3)
+
+  const handleOpenUrl = (url: string) => {
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
 
   return (
     <section className="section pd-section">
@@ -41,19 +46,51 @@ export default function PortfolioDetail() {
               <p className="pd-lead">{project.description}</p>
               <p className="pd-details">{project.details}</p>
               <div className="pd-actions">
-                {project.liveDemoUrl && (
-                  <Link to={project.liveDemoUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
+                {project.liveDemoUrl ? (
+                  <ActionButton
+                    variant="primary"
+                    onClick={() => handleOpenUrl(project.liveDemoUrl!)}
+                    loadingText="Opening Demo..."
+                    className="pd-action-btn"
+                  >
                     <Globe size={16} />
                     Live Demo
-                  </Link>
+                  </ActionButton>
+                ) : (
+                  <button
+                    className="btn btn-primary opacity-50 cursor-not-allowed"
+                    disabled
+                  >
+                    <Globe size={16} />
+                    Demo Unavailable
+                  </button>
                 )}
-                {project.githubUrl && (
-                  <Link to={project.githubUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+                {project.githubUrl ? (
+                  <ActionButton
+                    variant="outline"
+                    onClick={() => handleOpenUrl(project.githubUrl!)}
+                    loadingText="Opening GitHub..."
+                    className="pd-action-btn"
+                  >
                     <ExternalLink size={16} />
                     GitHub
-                  </Link>
+                  </ActionButton>
+                ) : (
+                  <button
+                    className="btn btn-outline opacity-50 cursor-not-allowed"
+                    disabled
+                  >
+                    <ExternalLink size={16} />
+                    Repository Unavailable
+                  </button>
                 )}
-                <Link to="/contact" className="btn btn-primary">
+                <Link
+                  to="/get-a-quote"
+                  className="btn btn-primary"
+                  onClick={() => {
+                    window.scrollTo(0, 0)
+                  }}
+                >
                   <MessageCircle size={16} />
                   Get a Quote
                 </Link>

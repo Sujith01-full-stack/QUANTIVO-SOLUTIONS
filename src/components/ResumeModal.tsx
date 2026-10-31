@@ -13,6 +13,7 @@ import {
 } from 'lucide-react'
 import Input from './UI/Input'
 import Textarea from './UI/Textarea'
+import CountrySelect from './UI/CountrySelect'
 import {
   RESUME_ACCEPT,
   RESUME_ACCEPT_LABEL,
@@ -28,15 +29,6 @@ import {
   type ResumeApplication,
 } from '../services/careers'
 
-const COUNTRY_CODES = [
-  { code: '+91', label: 'India' },
-  { code: '+1', label: 'USA/Canada' },
-  { code: '+44', label: 'UK' },
-  { code: '+61', label: 'Australia' },
-  { code: '+971', label: 'UAE' },
-  { code: '+65', label: 'Singapore' },
-]
-
 type Status = 'form' | 'submitting' | 'success'
 
 interface Props {
@@ -50,6 +42,7 @@ const EMPTY = {
   email: '',
   phone: '',
   countryCode: '+91',
+  countryName: 'India',
   position: '',
   message: '',
 }
@@ -167,11 +160,18 @@ export default function ResumeModal({ open, onClose, defaultPosition = '' }: Pro
     e.preventDefault()
     if (status === 'submitting') return
 
-    const fullPhone = `${form.countryCode} ${form.phone}`.trim()
+    // Validate phone: exactly 10 digits
+    const phoneDigits = form.phone.replace(/\D/g, '')
+    if (!phoneDigits || phoneDigits.length !== 10) {
+      setErrors(e => ({ ...e, phone: 'Please enter a valid 10-digit phone number.' }))
+      return
+    }
+
+    const fullPhone = `${form.countryCode}${phoneDigits}`
     const found = validateApplication({
       fullName: form.fullName,
       email: form.email,
-      phone: fullPhone,
+      phone: phoneDigits,
       position: form.position,
       message: form.message,
       resume: file,
@@ -190,6 +190,8 @@ export default function ResumeModal({ open, onClose, defaultPosition = '' }: Pro
       fullName: form.fullName,
       email: form.email,
       phone: fullPhone,
+      countryCode: form.countryCode,
+      countryISO: form.countryName ? form.countryName.slice(0, 2).toUpperCase() : 'IN',
       position: form.position,
       message: form.message,
       resume: file as File,
@@ -368,61 +370,66 @@ export default function ResumeModal({ open, onClose, defaultPosition = '' }: Pro
 
                 <div className="form-row">
                   <div className="form-group">
-                    <label htmlFor="hr-phone">Phone Number *</label>
-                    <div className="hr-phone-wrap">
-                      <select
-                        className="hr-country-code"
-                        value={form.countryCode}
-                        onChange={e => set('countryCode', e.target.value)}
-                        aria-label="Country code"
-                      >
-                        {COUNTRY_CODES.map(c => (
-                          <option key={c.code} value={c.code}>
-                            {c.code}
-                          </option>
-                        ))}
-                      </select>
-                      <input
-                        id="hr-phone"
-                        type="tel"
-                        inputMode="tel"
-                        value={form.phone}
-                        onChange={e => set('phone', e.target.value)}
-                        placeholder="Enter your phone number"
-                        autoComplete="tel"
-                        aria-invalid={!!errors.phone}
-                        aria-describedby={errors.phone ? 'err-hr-phone' : undefined}
-                      />
-                    </div>
+                    <label htmlFor="hr-country">Country Code *</label>
+                    <CountrySelect
+                      id="hr-country"
+                      value={form.countryCode}
+                      dialCode={form.countryCode}
+                      onChange={country => {
+                        set('countryCode', country.dialCode)
+                        set('countryName', country.name)
+                      }}
+                      required
+                    />
+                    {errors.countryCode && (
+                      <p className="hr-field-error" id="err-hr-country">
+                        {errors.countryCode}
+                      </p>
+                    )}
+                  </div>
+                  <div className="form-group">
+                    <Input
+                      label="Phone Number *"
+                      id="hr-phone"
+                      type="tel"
+                      inputMode="numeric"
+                      maxLength={10}
+                      value={form.phone}
+                      onChange={e => set('phone', e.target.value.replace(/\D/g, ''))}
+                      placeholder="Enter 10-digit phone number"
+                      autoComplete="tel"
+                      aria-invalid={!!errors.phone}
+                      aria-describedby={errors.phone ? 'err-hr-phone' : undefined}
+                    />
                     {errors.phone && (
                       <p className="hr-field-error" id="err-hr-phone">
                         {errors.phone}
                       </p>
                     )}
                   </div>
+                </div>
 
-                  <div className="form-group">
-                    <label htmlFor="hr-position">Position Applying For *</label>
-                    <select
-                      id="hr-position"
-                      value={form.position}
-                      onChange={e => set('position', e.target.value)}
-                      aria-invalid={!!errors.position}
-                      aria-describedby={errors.position ? 'err-hr-position' : undefined}
-                    >
-                      <option value="">Select a position</option>
-                      {careerPositions.map(p => (
-                        <option key={p} value={p}>
-                          {p}
-                        </option>
-                      ))}
-                    </select>
-                    {errors.position && (
-                      <p className="hr-field-error" id="err-hr-position">
-                        {errors.position}
-                      </p>
-                    )}
-                  </div>
+                <div className="form-group">
+                  <label htmlFor="hr-position">Position Applying For *</label>
+                  <select
+                    id="hr-position"
+                    value={form.position}
+                    onChange={e => set('position', e.target.value)}
+                    aria-invalid={!!errors.position}
+                    aria-describedby={errors.position ? 'err-hr-position' : undefined}
+                  >
+                    <option value="">Select a position</option>
+                    {careerPositions.map(p => (
+                      <option key={p} value={p}>
+                        {p}
+                      </option>
+                    ))}
+                  </select>
+                  {errors.position && (
+                    <p className="hr-field-error" id="err-hr-position">
+                      {errors.position}
+                    </p>
+                  )}
                 </div>
 
                 <div className="form-group">

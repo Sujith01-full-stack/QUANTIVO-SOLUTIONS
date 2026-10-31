@@ -8,6 +8,7 @@ import { companyContact } from '../../services/siteConfig'
 import { fadeInUp, staggerContainer, slideInLeft } from '../../lib/animations'
 import Input from '../UI/Input'
 import Textarea from '../UI/Textarea'
+import ServiceSelect from '../UI/ServiceSelect'
 
 const serviceOptions = [
   ...offerings.map(o => o.title),
@@ -42,14 +43,21 @@ export default function Contact() {
     message: planOption ? `I'm interested in the ${planOption}. Please share more details.` : '',
   })
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({})
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault()
     setStatus('loading')
+    setFieldErrors({})
     try {
-      await submitContactForm(formData)
-      setStatus('success')
-      setFormData({ name: '', email: '', phone: '', service: initialService, message: '' })
+      const result = await submitContactForm(formData)
+      if (result.ok) {
+        setStatus('success')
+        setFormData({ name: '', email: '', phone: '', service: initialService, message: '' })
+      } else {
+        setStatus('error')
+        setFieldErrors(result.fieldErrors || {})
+      }
     } catch {
       setStatus('error')
     }
@@ -145,6 +153,7 @@ export default function Contact() {
                 onChange={e => setFormData({ ...formData, name: e.target.value })}
                 required
               />
+              {fieldErrors.name && <p className="mt-1 text-xs text-error">{fieldErrors.name}</p>}
               <Input
                 label="Email"
                 id="email"
@@ -153,6 +162,7 @@ export default function Contact() {
                 onChange={e => setFormData({ ...formData, email: e.target.value })}
                 required
               />
+              {fieldErrors.email && <p className="mt-1 text-xs text-error">{fieldErrors.email}</p>}
             </motion.div>
             <motion.div className="form-row" variants={fadeInUp}>
               <Input
@@ -162,18 +172,18 @@ export default function Contact() {
                 value={formData.phone}
                 onChange={e => setFormData({ ...formData, phone: e.target.value })}
               />
+              {fieldErrors.phone && <p className="mt-1 text-xs text-error">{fieldErrors.phone}</p>}
               <div className="form-group">
-                <label htmlFor="service">Service Interested In</label>
-                <select
+                <ServiceSelect
                   id="service"
+                  label="Service Interested In"
                   value={formData.service}
-                  onChange={e => setFormData({ ...formData, service: e.target.value })}
-                >
-                  {allOptions.map(opt => (
-                    <option key={opt} value={opt}>{opt}</option>
-                  ))}
-                </select>
+                  onChange={val => setFormData({ ...formData, service: val })}
+                  options={allOptions}
+                  required
+                />
               </div>
+              {fieldErrors.service && <p className="mt-1 text-xs text-error">{fieldErrors.service}</p>}
             </motion.div>
             <motion.div variants={fadeInUp}>
               <Textarea
@@ -183,6 +193,7 @@ export default function Contact() {
                 onChange={e => setFormData({ ...formData, message: e.target.value })}
                 required
               />
+              {fieldErrors.message && <p className="mt-1 text-xs text-error">{fieldErrors.message}</p>}
             </motion.div>
             <motion.button type="submit" className="btn btn-primary" disabled={status === 'loading'} variants={fadeInUp}>
               {status === 'loading' ? 'Sending...' : <>Send Message <Send size={16} /></>}

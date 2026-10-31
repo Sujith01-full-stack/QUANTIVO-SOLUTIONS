@@ -1,17 +1,24 @@
-import { useParams, Link } from 'react-router-dom'
+import { useParams, Link, useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { ArrowLeft, ArrowRight, Check, Sparkles } from 'lucide-react'
 import { getServiceBySlug } from '../services/website'
 import NotFound from './NotFound'
 import { fadeInUp, staggerContainer, scaleIn } from '../lib/animations'
+import ActionButton from '../components/UI/ActionButton'
 
 export default function ServiceDetail() {
   const { slug } = useParams<{ slug: string }>()
   const service = slug ? getServiceBySlug(slug) : undefined
+  const navigate = useNavigate()
 
   if (!service) return <NotFound />
 
-  const quotePath = `/contact?service=${encodeURIComponent(service.title)}`
+  const quotePath = `/get-a-quote?service=${encodeURIComponent(service.title)}`
+
+  const handleGetAQuote = () => {
+    window.scrollTo(0, 0)
+    navigate(quotePath)
+  }
 
   return (
     <section className="section service-detail">
@@ -36,10 +43,15 @@ export default function ServiceDetail() {
               <p className="sd-lead">{service.description}</p>
               <p className="sd-details">{service.details}</p>
               <div className="sd-actions">
-                <Link to={quotePath} className="btn btn-primary">
+                <ActionButton
+                  variant="primary"
+                  onClick={handleGetAQuote}
+                  loadingText="Opening Quote..."
+                  className="sd-action-btn"
+                >
                   Get a Quote
                   <ArrowRight size={16} />
-                </Link>
+                </ActionButton>
                 <Link to="/services" className="btn btn-outline">
                   Back to Services
                 </Link>
@@ -123,10 +135,15 @@ export default function ServiceDetail() {
             Tell us about your goals — we will reply within 24 hours with a tailored plan.
           </motion.p>
           <motion.div className="sd-actions sd-cta-actions" variants={fadeInUp}>
-            <Link to={quotePath} className="btn btn-primary">
+            <ActionButton
+              variant="primary"
+              onClick={handleGetAQuote}
+              loadingText="Opening Quote..."
+              className="sd-action-btn"
+            >
               Get a Quote
               <ArrowRight size={16} />
-            </Link>
+            </ActionButton>
             <Link to="/services" className="btn btn-outline">
               Back to Services
             </Link>

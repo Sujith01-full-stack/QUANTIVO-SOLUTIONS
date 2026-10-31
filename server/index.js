@@ -1,4 +1,6 @@
 import 'dotenv/config'
+import fs from 'fs'
+import path from 'path'
 import express from 'express'
 import multer from 'multer'
 import nodemailer from 'nodemailer'
@@ -104,6 +106,35 @@ function rateLimit(req, res, next) {
 }
 
 /* ------------------------------------------------------------------ *
+ * Contact enquiry persistence — JSON file store (no database configured)
+ * ------------------------------------------------------------------ */
+const DATA_DIR = path.join(process.cwd(), 'server', 'data')
+const CONTACTS_FILE = path.join(DATA_DIR, 'contacts.json')
+
+function ensureDataDir() {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true })
+  }
+}
+
+function readContacts() {
+  ensureDataDir()
+  if (!fs.existsSync(CONTACTS_FILE)) return []
+  try {
+    return JSON.parse(fs.readFileSync(CONTACTS_FILE, 'utf8'))
+  } catch {
+    return []
+  }
+}
+
+function appendContact(record) {
+  ensureDataDir()
+  const contacts = readContacts()
+  contacts.push(record)
+  fs.writeFileSync(CONTACTS_FILE, JSON.stringify(contacts, null, 2))
+}
+
+/* ------------------------------------------------------------------ *
  * Upload handling — memory only, so resumes are never written to a
  * publicly reachable directory.
  * ------------------------------------------------------------------ */
@@ -160,6 +191,8 @@ app.post('/api/careers/apply', rateLimit, upload.single('resume'), async (req, r
   const name = sanitize(req.body.fullName, 120)
   const email = sanitize(req.body.email, 160)
   const phone = sanitize(req.body.phone, 40)
+  const countryCode = sanitize(req.body.countryCode, 20)
+  const countryISO = sanitize(req.body.countryISO, 10)
   const position = sanitize(req.body.position, 160)
   const message = sanitize(req.body.message, 3000)
 
@@ -173,9 +206,10 @@ app.post('/api/careers/apply', rateLimit, upload.single('resume'), async (req, r
   }
   if (!phone) {
     errors.phone = 'Phone number is required.'
-  } else if (!/^\+?[\d\s()-]{7,20}$/.test(phone)) {
-    errors.phone = 'Please enter a valid phone number with country code.'
+  } else if (!/^\d{10}$/.test(phone)) {
+    errors.phone = 'Please enter a valid 10-digit phone number.'
   }
+  if (!countryCode) errors.countryCode = 'Country code is required.'
   if (!position) errors.position = 'Please select a position.'
 
   const file = req.file
@@ -210,6 +244,8 @@ app.post('/api/careers/apply', rateLimit, upload.single('resume'), async (req, r
         ${row('Full Name', name)}
         ${row('Email', email)}
         ${row('Phone', phone)}
+        ${row('Country Code', countryCode)}
+        ${row('Country ISO', countryISO)}
         ${row('Position', position)}
       </table>
       <h3 style="margin:22px 0 8px;color:#171717;font-size:15px;">Message</h3>
@@ -265,6 +301,175 @@ app.post('/api/careers/apply', rateLimit, upload.single('resume'), async (req, r
     return res.status(502).json({
       ok: false,
       error: 'We could not send your application right now. Please try again shortly.',
+    })
+  }
+})
+
+/* ------------------------------------------------------------------ *
+ * Contact form submission
+ * ------------------------------------------------------------------ */
+const CONTACT_EMAIL = process.env.CONTACT_EMAIL || 'techquantivosolutions@gmail.com'
+
+app.post('/api/contact', rateLimit, async (req, res) => {
+  const mail = getTransporter()
+
+  const name = sanitize(req.body.name, 120)
+  const email = sanitize(req.body.email, 160)
+  const phone = sanitize(req.body.phone, 40)
+  const companyName = sanitize(req.body.companyName, 120)
+  const country = sanitize(req.body.country, 120)
+  const countryCode = sanitize(req.body.countryCode, 20)
+  const countryISO = sanitize(req.body.countryISO, 10)
+  const contactMethod = sanitize(req.body.contactMethod, 80)
+  const service = sanitize(req.body.service, 160)
+  const budget = sanitize(req.body.budget, 160)
+  const timeline = sanitize(req.body.timeline, 160)
+  const referenceUrl = sanitize(req.body.referenceUrl, 500)
+  const message = sanitize(req.body.message, 3000)
+
+  /* ---------------- Validation ---------------- */
+  const errors = {}
+  if (!name) errors.name = 'Full name is required.'
+  if (!email) {
+    errors.email = 'Email address is required.'
+  } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) {
+    errors.email = 'Please enter a valid email address.'
+  }
+  if (!phone) errors.phone = 'Phone number is required.'
+  else if (!/^\d{10}$/.test(phone)) errors.phone = 'Please enter a valid 10-digit phone number.'
+  if (!country) errors.country = 'Please select a country.'
+  if (!service) errors.service = 'Please select a service.'
+  if (!budget) errors.budget = 'Please select a budget.'
+  if (!timeline) errors.timeline = 'Please select a timeline.'
+  if (!message) errors.message = 'Please tell us about your project.'
+
+  if (Object.keys(errors).length > 0) {
+    return res.status(400).json({ ok: false, errors, message: 'Please fix the errors above.' })
+  }
+
+  /* ---------------- Persist to JSON store ---------------- */
+  const record = {
+    id: Date.now().toString(),
+    createdAt: new Date().toISOString(),
+    name,
+    email,
+    phone,
+    companyName,
+    country,
+    countryCode,
+    countryISO,
+    contactMethod,
+    service,
+    budget,
+    timeline,
+    referenceUrl,
+    message,
+  }
+  appendContact(record)
+
+  /* ---------------- Send email notification ---------------- */
+  if (!mail || !CONTACT_EMAIL) {
+    // Mail not configured — still return success since enquiry was saved
+    return res.json({
+      ok: true,
+      message: 'Message received. Email notifications are not configured.',
+    })
+  }
+
+  const escapeCell = (value) => escapeHtml(value || '—')
+
+  const html = `
+  <div style="font-family:Arial,Helvetica,sans-serif;background:#FAFAFA;padding:24px;">
+    <div style="max-width:640px;margin:0 auto;background:#FFFFFF;border:1px solid #EAEAEA;border-radius:14px;padding:28px;">
+      <h2 style="margin:0 0 4px;color:#171717;font-size:20px;">New Quote Request</h2>
+      <p style="margin:0 0 20px;color:#5B6475;font-size:14px;">${escapeHtml(COMPANY_NAME)} quote form</p>
+
+      <h3 style="margin:22px 0 8px;color:#171717;font-size:15px;">Customer Details</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:15px;">
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Full Name</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(name)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Company Name</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(companyName)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Email Address</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(email)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Phone Number</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(phone)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Country</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(country)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Country Code</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(countryCode)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Country ISO</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(countryISO)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Preferred Contact Method</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(contactMethod)}</td></tr>
+      </table>
+
+      <h3 style="margin:22px 0 8px;color:#171717;font-size:15px;">Project Details</h3>
+      <table style="width:100%;border-collapse:collapse;font-size:15px;">
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Selected Service</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(service)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Project Budget</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(budget)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Project Timeline</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(timeline)}</td></tr>
+        <tr><td style="padding:8px 16px 8px 0;color:#5B6475;white-space:nowrap;vertical-align:top;">Reference Website URL</td><td style="padding:8px 0;color:#171717;font-weight:600;">${escapeCell(referenceUrl)}</td></tr>
+      </table>
+
+      <h3 style="margin:22px 0 8px;color:#171717;font-size:15px;">Project Description</h3>
+      <div style="color:#5B6475;font-size:15px;line-height:1.6;white-space:pre-wrap;">${escapeCell(message)}</div>
+
+      <p style="margin:22px 0 0;color:#5B6475;font-size:13px;">Received: ${new Date().toLocaleString()}</p>
+
+      <hr style="margin:28px 0 12px 0;border:none;border-top:1px solid #EAEAEA;">
+
+      <p style="color:#5B6475;font-size:13px;margin:0;">
+        <strong>${escapeHtml(COMPANY_NAME)}</strong><br>
+        Email: <a href="mailto:techquantivosolutions@gmail.com" style="color:#FF6A00;text-decoration:none;">techquantivosolutions@gmail.com</a>
+      </p>
+    </div>
+  </div>`
+
+  const text = [
+    `New Quote Request — ${COMPANY_NAME}`,
+    '',
+    'Customer Details:',
+    `Full Name: ${name}`,
+    `Company Name: ${companyName || '—'}`,
+    `Email Address: ${email}`,
+    `Phone Number: ${phone || '—'}`,
+    `Country: ${country || '—'}`,
+    `Country Code: ${countryCode || '—'}`,
+    `Country ISO: ${countryISO || '—'}`,
+    `Preferred Contact Method: ${contactMethod || '—'}`,
+    '',
+    'Project Details:',
+    `Selected Service: ${service}`,
+    `Project Budget: ${budget || '—'}`,
+    `Project Timeline: ${timeline || '—'}`,
+    `Reference Website URL: ${referenceUrl || '—'}`,
+    '',
+    'Project Description:',
+    message || '—',
+    '',
+    `Received: ${new Date().toISOString()}`,
+    '',
+    `${COMPANY_NAME}`,
+    `Email: techquantivosolutions@gmail.com`,
+  ].join('\n')
+
+  try {
+    const info = await mail.sendMail({
+      from: `"${COMPANY_NAME} Quote" <${SMTP_USER}>`,
+      to: CONTACT_EMAIL,
+      replyTo: email,
+      subject: `New Quote Request – ${name} – QUANTIVO SOLUTIONS`,
+      text,
+      html,
+    })
+
+    const accepted = Array.isArray(info.accepted) && info.accepted.length > 0
+    if (!accepted) {
+      return res.status(502).json({
+        ok: false,
+        error: 'We could not deliver your quote request right now. Please try again shortly.',
+      })
+    }
+
+    return res.json({ ok: true, message: 'Quote request sent successfully.' })
+  } catch (err) {
+    console.error('[contact] delivery failed:', err && err.message)
+    return res.status(502).json({
+      ok: false,
+      error: 'We could not send your quote request right now. Please try again shortly.',
     })
   }
 })

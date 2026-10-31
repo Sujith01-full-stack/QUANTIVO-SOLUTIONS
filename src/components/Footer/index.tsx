@@ -70,7 +70,6 @@ export default function Footer() {
         </div>
         <div className="footer-bottom">
           <p>© {new Date().getFullYear()} Quantivo Solutions. All rights reserved.</p>
-          <p>Built with React + TypeScript + Vite</p>
         </div>
       </div>
     </footer>

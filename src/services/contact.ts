@@ -2,8 +2,22 @@ export interface ContactFormData {
   name: string
   email: string
   phone?: string
+  companyName?: string
+  country?: string
+  countryCode?: string
+  countryName?: string
+  contactMethod?: string
   service: string
+  budget?: string
+  timeline?: string
+  referenceUrl?: string
   message: string
+}
+
+export interface ContactFormResult {
+  ok: boolean
+  message?: string
+  fieldErrors?: Record<string, string>
 }
 
 export interface TeamMember {
@@ -44,24 +58,24 @@ export const teamMembers: TeamMember[] = [
     name: 'Shyam',
     role: 'Full Stack Developer',
     initials: 'S',
-    bio: 'Full stack developer with 2+ years of experience — Angular on the frontend and .NET on the backend.',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    bio: 'Full Stack Developer with expertise in Angular on the frontend and .NET on the backend.',
+    social: { linkedin: '#', github: '#' },
   },
   {
     id: 2,
-    name: 'Ajay',
+    name: 'Ajay Rathnam',
     role: 'Full Stack Developer',
     initials: 'A',
-    bio: 'Full stack developer with 1.8+ years of experience — React on the frontend, .NET and Django on the backend, and Flutter mobile apps.',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    bio: 'Full Stack Developer with expertise in React on the frontend, .NET and Django on the backend, and Flutter mobile apps.',
+    social: { linkedin: 'https://www.linkedin.com/in/ajayrathnam', github: 'https://github.com/ajay-aj-03' },
   },
   {
     id: 3,
     name: 'Sujith',
     role: 'Full Stack Developer',
     initials: 'S',
-    bio: 'Full stack developer with 1+ year of experience — React and Next.js on the frontend, Django on the backend.',
-    social: { linkedin: '#', twitter: '#', github: '#' },
+    bio: 'Full Stack Developer with expertise in React and Next.js on the frontend and Django on the backend.',
+    social: { linkedin: 'https://www.linkedin.com/in/mrsujith01', github: 'https://github.com/Sujith01-full-stack' },
   },
 ]
 
@@ -329,8 +343,94 @@ export function getPortfolioItemBySlug(slug: string): PortfolioItem | undefined 
   return portfolioItems.find(item => item.slug === slug)
 }
 
-export async function submitContactForm(data: ContactFormData): Promise<{ success: boolean }> {
-  await new Promise(resolve => setTimeout(resolve, 900))
-  console.log('Contact form submitted:', data)
-  return { success: true }
+const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+
+/**
+ * Client-side pre-flight validation. The server re-validates everything.
+ */
+export function validateContactForm(data: ContactFormData): Record<string, string> {
+  const errors: Record<string, string> = {}
+
+  if (!data.name.trim()) errors.name = 'Full name is required.'
+
+  if (!data.email.trim()) {
+    errors.email = 'Email address is required.'
+  } else if (!EMAIL_RE.test(data.email.trim())) {
+    errors.email = 'Please enter a valid email address.'
+  }
+
+  if (!data.phone?.trim()) errors.phone = 'Phone number is required.'
+
+  if (!data.service.trim()) errors.service = 'Please select a service.'
+
+  if (!data.budget?.trim()) errors.budget = 'Please select a budget.'
+
+  if (!data.timeline?.trim()) errors.timeline = 'Please select a timeline.'
+
+  if (!data.message.trim()) errors.message = 'Please tell us about your project.'
+
+  return errors
+}
+
+/**
+ * Submit the contact form. Resolves only after the server confirms the
+ * message was accepted — never optimistically.
+ */
+export async function submitContactForm(
+  data: ContactFormData,
+  signal?: AbortSignal,
+): Promise<ContactFormResult> {
+  // Client-side pre-flight validation
+  const fieldErrors = validateContactForm(data)
+  if (Object.keys(fieldErrors).length > 0) {
+    return {
+      ok: false,
+      message: 'Please fix the errors above.',
+      fieldErrors,
+    }
+  }
+
+  let res: Response
+  try {
+    res = await fetch('/api/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: data.name.trim(),
+        email: data.email.trim(),
+        phone: (data.phone || '').trim(),
+        companyName: (data.companyName || '').trim(),
+        country: (data.country || '').trim(),
+        contactMethod: (data.contactMethod || '').trim(),
+        service: data.service.trim(),
+        budget: (data.budget || '').trim(),
+        timeline: (data.timeline || '').trim(),
+        referenceUrl: (data.referenceUrl || '').trim(),
+        message: data.message.trim(),
+      }),
+      signal,
+    })
+  } catch {
+    return {
+      ok: false,
+      message: 'We could not reach the server. Check your connection and try again.',
+    }
+  }
+
+  let payload: ContactFormResult = { ok: false }
+  try {
+    payload = (await res.json()) as ContactFormResult
+  } catch {
+    payload = { ok: false }
+  }
+
+  if (!res.ok) {
+    return {
+      ok: false,
+      message: payload.message || 'Something went wrong. Please try again.',
+      fieldErrors: payload.fieldErrors,
+    }
+  }
+
+  return { ok: true, message: payload.message || 'Message sent.' }
 }

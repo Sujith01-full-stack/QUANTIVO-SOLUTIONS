@@ -4,6 +4,8 @@ export interface ResumeApplication {
   fullName: string
   email: string
   phone: string
+  countryCode?: string
+  countryISO?: string
   position: string
   message: string
   resume: File
@@ -16,7 +18,7 @@ export interface ApplyResult {
 }
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
-const PHONE_RE = /^\+?[\d\s()-]{7,20}$/
+const PHONE_RE = /^\d{10}$/
 const ALLOWED_EXT = ['.pdf', '.doc', '.docx']
 const ALLOWED_MIME = [
   'application/pdf',
@@ -45,7 +47,7 @@ export function validateApplication(data: Omit<ResumeApplication, 'resume'> & { 
   if (!data.phone.trim()) {
     errors.phone = 'Phone number is required.'
   } else if (!PHONE_RE.test(data.phone.trim())) {
-    errors.phone = 'Enter a valid number with country code.'
+    errors.phone = 'Please enter a valid 10-digit phone number.'
   }
 
   if (!data.position) errors.position = 'Please select a position.'
@@ -77,6 +79,8 @@ export async function submitResumeApplication(
   form.append('fullName', data.fullName.trim())
   form.append('email', data.email.trim())
   form.append('phone', data.phone.trim())
+  form.append('countryCode', data.countryCode || '')
+  form.append('countryISO', data.countryISO || '')
   form.append('position', data.position)
   form.append('message', data.message.trim())
   form.append('resume', data.resume)

@@ -11,6 +11,7 @@ const navLinks = [
   { path: '/portfolio', label: 'Portfolio' },
   { path: '/team', label: 'Team' },
   { path: '/hr-careers', label: 'HR & Careers' },
+  { path: '/contact', label: 'Contact' },
   { path: '/get-a-quote', label: 'Get a Quote' },
 ]
 
